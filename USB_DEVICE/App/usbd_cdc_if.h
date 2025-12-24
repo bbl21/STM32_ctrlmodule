@@ -94,7 +94,9 @@
 extern USBD_CDC_ItfTypeDef USBD_Interface_fops_FS;
 
 /* USER CODE BEGIN EXPORTED_VARIABLES */
-
+extern uint8_t UserRxBufferFS[APP_RX_DATA_SIZE];
+extern volatile uint32_t usb_rx_len;
+extern volatile uint8_t usb_data_ready;
 /* USER CODE END EXPORTED_VARIABLES */
 
 /**
@@ -109,7 +111,7 @@ extern USBD_CDC_ItfTypeDef USBD_Interface_fops_FS;
 uint8_t CDC_Transmit_FS(uint8_t* Buf, uint16_t Len);
 
 /* USER CODE BEGIN EXPORTED_FUNCTIONS */
-
+void usb_clear_flag(void);
 /* USER CODE END EXPORTED_FUNCTIONS */
 
 /**

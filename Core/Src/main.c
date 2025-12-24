@@ -105,9 +105,23 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-    HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-    CDC_Transmit_FS((uint8_t *)"Hello USB!\r\n", 13);
-    HAL_Delay(500);
+    if (usb_data_ready)
+    {
+      // 此时 UserRxBufferFS 中有数据，长度为 usb_rx_len
+      // 例如：回传收到的数据
+      CDC_Transmit_FS(UserRxBufferFS, usb_rx_len);
+
+      // 清除标志（注意：此处非原子操作，简单应用可接受）
+      usb_data_ready = 0;
+
+      // 如果需要，可以在这里赋值给你的主逻辑变量
+      // 例如：my_global_cmd = UserRxBufferFS[0];
+    }
+
+    HAL_Delay(1); // 避免死循环占满 CPU
+    // HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+    // CDC_Transmit_FS((uint8_t *)"Hello USB!\r\n", 13);
+    // HAL_Delay(500);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
