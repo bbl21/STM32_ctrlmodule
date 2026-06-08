@@ -1,0 +1,49 @@
+# Build artifacts
+build/
+CMakeFiles/
+cmake_install.cmake
+CMakeCache.txt
+CMakeOutput.log
+CMakeError.log
+
+# Object / binary
+*.o
+*.obj
+*.elf
+*.hex
+*.bin
+*.map
+*.exe
+*.lib
+*.dll
+
+# VS
+.vs/
+*.vcxproj*
+*.sln
+*.suo
+*.user
+*.useros
+
+# Qt
+moc_*.cpp
+qrc_*.cpp
+ui_*.h
+*.pro.user
+
+# IDE
+.idea/
+*.swp
+*.swo
+*~
+
+# Office temp
+~$*
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
